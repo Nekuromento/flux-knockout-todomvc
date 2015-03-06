@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-framework="knockoutjs">
+    <head>
+        <meta charset="utf-8">
+        <title>Knockout.js • TodoMVC</title>
+        <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+        <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+    </head>
+    <body>
+        <section id="todoapp">
+            <header data-bind="with: header" id="header">
+                <h1>todos</h1>
+                <input id="new-todo" data-bind="value: input.value, valueUpdate: 'afterkeydown', enterKey: input.save, event: { blur: input.save }" placeholder="What needs to be done?" autofocus>
+            </header>
+            <section id="main" data-bind="with: mainSection, visible: mainSection.todos().length">
+                <input id="toggle-all" data-bind="checked: allAreComplete" type="checkbox">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="todo-list" data-bind="foreach: todos">
+                    <li data-bind="css: { completed: completed, editing: editing }">
+                        <div class="view">
+                            <input class="toggle" data-bind="checked: completed" type="checkbox">
+                            <label data-bind="text: todo.text, event: { dblclick: onDoubleClick }"></label>
+                            <button class="destroy" data-bind="click: onDestroyClick"></button>
+                        </div>
+                        <input class="edit" data-bind="value: input.value, valueUpdate: 'afterkeydown', enterKey: input.save, selectAndFocus: editing, event: { blur: input.save }">
+                    </li>
+                </ul>
+            </section>
+            <footer id="footer" data-bind="with: footer, visible: footer.completedCount() || footer.remainingCount()">
+                <span id="todo-count">
+                    <strong data-bind="text: remainingCount">0</strong>
+                    <span data-bind="text: itemsLeftLabel"></span> left
+                </span>
+                <button id="clear-completed" data-bind="visible: completedCount, click: onClearCompletedClick">Clear completed (<span data-bind="text: completedCount"></span>)</button>
+            </footer>
+        </section>
+        <footer id="info">
+            <p>Double-click to edit a todo</p>
+            <p>Written by <a href="https://github.com/ashish01/knockoutjs-todos">Ashish Sharma</a>, <a href="http://knockmeout.net">Ryan Niemeyer</a> and <a href="https://twitter.com/loicknuchel">Loïc Knuchel</a></p>
+            <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+        </footer>
+        <script src="node_modules/todomvc-common/base.js"></script>
+        <script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+    </body>
+</html>

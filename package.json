@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "node_modules/requirejs/bin/r.js -convert node_modules/events js/events && node_modules/requirejs/bin/r.js -convert node_modules/flux js/flux"
+  },
+  "dependencies": {
+    "events": "^1.0.2",
+    "flux": "^2.0.1",
+    "knockout": "^3.3.0",
+    "requirejs": "^2.1.16",
+    "todomvc-app-css": "^1.0.1",
+    "todomvc-common": "^1.0.1"
+  }
+}
