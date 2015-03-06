@@ -1,6 +1,6 @@
 # flux-knockout-todomvc
 
-Instalation
+Installation
 
     npm install
     npm run build
